@@ -1,43 +1,82 @@
+let playerScore=0;
+let computerScore=0;
+
 
 const getComputerChoice=()=>{
 const choices=['rock','paper','scissors']
 return choices[Math.floor(Math.random()*choices.length)]
 
 }
-const computerSelection=getComputerChoice()
-const playerSelection=(prompt("Please select your weapon:")).toLowerCase()
-console.log(playerSelection,computerSelection)
+
+
 const play=(playerSelection,computerSelection)=>{
     if(playerSelection=='rock'){
         if(computerSelection=='paper'){
-            return 'You Lose! Paper beats Rock'
+            console.log( 'You Lose! Paper beats Rock')
+            computerScore++
         }
         else if(computerSelection=='scissors'){
-            return 'You Win! Rock beats scissors'
+            console.log( 'You Win! Rock beats scissors')
+            playerScore++
         }
-        else return 'It is a Draw!'
+        else console.log( 'It is a Draw!')
 
     }
     else if(playerSelection=='paper'){
         if(computerSelection=='rock'){
-            return 'You win! Paper beats Rock'
+            console.log( 'You win! Paper beats Rock')
+            playerScore++
+
         }
         else if(computerSelection=='scissors'){
-            return 'You Lose! Scissors beats paper'
+            console.log( 'You Lose! Scissors beats paper')
+            computerScore++;
         }
-        else return 'It is a Draw!'
+        else console.log( 'It is a Draw!')
 
     }
     else if(playerSelection=='scissors'){
         if(computerSelection=='paper'){
-            return 'You Win! Scissors beats Paper'
+            console.log( 'You Win! Scissors beats Paper')
         }
         else if(computerSelection=='Rock'){
-            return 'You Lose! Rock beats scissors'
+            console.log('You Lose! Rock beats scissors')
+            computerScore++;
         }
-        else return 'It is a Draw!'
+        else console.log('It is a Draw!')
 
     }
+}
+
+
+function game(){
+ 
+
+    let i=1;
+    while(i<=5){
+    const computerSelection=getComputerChoice()
+    const playerSelection=(prompt("Please select your weapon:")).toLowerCase()
+     play(playerSelection,computerSelection)
+    i++;
+    }
+    
+
+    if(playerScore>computerScore){
+        console.log(`Congratulations You Won!\n Your score ${playerScore} : Computer Score ${computerScore}`)
+    }
+    else if(computerScore>playerScore){
+        console.log(`Sorry You Lost!\n Your score ${playerScore} : Computer Score ${computerScore}`)
+
+        
+    }
+    else {
+        console.log(`It was a Draw!\n Your score ${playerScore} : Computer Score ${computerScore}`)
+    }
+    
+   
+
 
 }
-console.log(play(playerSelection,computerSelection))
+
+
+game()
